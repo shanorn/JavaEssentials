@@ -20,6 +20,8 @@ public class Ejercicio19 {
         
         int cantidadDigitos = String.valueOf(numero).length();
         
+        if (numero < 0) cantidadDigitos--;
+        
         System.out.println("El numero: " + numero + " tiene " + cantidadDigitos + " dígitos");
         
         

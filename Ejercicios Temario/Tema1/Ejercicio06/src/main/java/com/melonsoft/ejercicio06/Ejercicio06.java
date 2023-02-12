@@ -16,13 +16,24 @@ import java.util.logging.Logger;
  */
 public class Ejercicio06 {
 
+    /**
+     *
+     * @param num
+     * @return
+     */
     public static boolean esPrimo(int num){
         for (int i = 2; i < num; i++){
             if (num % i == 0) return false;
         }
+        
         return true;
     }
     
+    /**
+     *
+     * @param n
+     * @return
+     */
     public static int[] arrayPrimos(int n){
         int[] array = new int[n];
         
@@ -40,12 +51,20 @@ public class Ejercicio06 {
         return array;
     }
     
+    /**
+     *
+     * @param array
+     */
     public static void printArray(int[] array){
         for (int element: array){
             System.out.println(element);
         }
     }
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
