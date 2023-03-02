@@ -15,6 +15,9 @@ public class GuerraMultiple {
     private int numTerricolasPorNave;
     private int numMarcianosPorNave;
     
+    private int numNavesTerricolas;
+    private int numNavesMarcianas;
+    
     public GuerraMultiple(int numeroNavesTerricolas, int numeroTerricolasPorNave, int numeroNavesMarcianas, int numeroMarcianosPorNave){
         this.navesTerricolas = new Nave[numeroNavesTerricolas];
         
@@ -30,6 +33,9 @@ public class GuerraMultiple {
         
         this.numTerricolasPorNave = numeroTerricolasPorNave;
         this.numMarcianosPorNave = numeroMarcianosPorNave;
+        
+        this.numNavesTerricolas = numeroNavesTerricolas;
+        this.numNavesMarcianas = numeroNavesMarcianas;
     }
     
     public void empiezaGuerra() {
@@ -51,6 +57,7 @@ public class GuerraMultiple {
                     
                 }
             }*/
+            /*
             int tamanoMaxTripulaciones = navesTerricolas[0].cuantosQuedan() > navesMarcianas[0].cuantosQuedan() ?
                 navesTerricolas[0].cuantosQuedan() : navesMarcianas[0].cuantosQuedan();
             
@@ -76,7 +83,9 @@ public class GuerraMultiple {
                     }   
                 }
                 
-            }
+            }*/
+            
+            
                         
         } while (quedanVivosEnAmbosBandos());
         
