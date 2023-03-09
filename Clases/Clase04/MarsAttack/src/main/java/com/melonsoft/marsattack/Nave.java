@@ -57,4 +57,5 @@ public class Nave {
             return Integer.MIN_VALUE;
         }
     }
+    
 }

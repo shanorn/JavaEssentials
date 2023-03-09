@@ -57,34 +57,32 @@ public class GuerraMultiple {
                     
                 }
             }*/
-            /*
+            
             int tamanoMaxTripulaciones = navesTerricolas[0].cuantosQuedan() > navesMarcianas[0].cuantosQuedan() ?
                 navesTerricolas[0].cuantosQuedan() : navesMarcianas[0].cuantosQuedan();
             
             System.out.println(tamanoMaxTripulaciones);
             
-            for (int i = 0; i < Terricola.getTotal() && quedanVivosEnAmbosBandos(); i++) {
-                int auxTerricola = i % numTerricolasPorNave;
-                int auxNaveTerricola = (i / numTerricolasPorNave);
-                System.out.println("i: " + i + "\n");    
-                for (int j = 0; j < Marciano.getTotal(); j++){
-                    System.out.println("j: " + j + "\n");
-                    int auxMarciano = j % numMarcianosPorNave;
-                    int auxNaveMarciana = j / numMarcianosPorNave;
-
-                    if (auxNaveMarciana < this.navesMarcianas.length && auxNaveTerricola < this.navesTerricolas.length && auxTerricola < numTerricolasPorNave) {
-                        System.out.println("La nave " + auxNaveTerricola + " terricola ataca a " + auxNaveMarciana + " marciana con tripulante " + auxTerricola);
-                        this.navesMarcianas[auxNaveMarciana].recibeDisparo(this.navesTerricolas[auxNaveTerricola].generaDisparo(auxTerricola));
+            for(int i = 0; i < this.numNavesTerricolas && quedanVivosEnAmbosBandos(); i++){
+                for (int j = 0; j < this.numNavesMarcianas && quedanVivosEnAmbosBandos(); j++){
+                    
+                    for (int k = 0; k < this.numTerricolasPorNave && quedanVivosEnAmbosBandos(); k++){
+                        for (int l = 0; l < this.numMarcianosPorNave && quedanVivosEnAmbosBandos(); l++){
+                            
+                            this.navesMarcianas[j].recibeDisparo(this.navesTerricolas[i].generaDisparo(k));
+                            
                         
+                            this.navesTerricolas[i].recibeDisparo(this.navesMarcianas[j].generaDisparo(l));
+                        
+                        }
                     }
-                    if (auxNaveMarciana < this.navesMarcianas.length && auxNaveTerricola < this.navesTerricolas.length && auxMarciano < numMarcianosPorNave) {
-                        System.out.println("La nave " + auxNaveTerricola + " marciana ataca a " + auxNaveMarciana + " terricola con tripulante " + auxTerricola);
-                        this.navesTerricolas[auxNaveTerricola].recibeDisparo(this.navesMarcianas[auxNaveMarciana].generaDisparo(auxMarciano));
-                    }   
                 }
-                
-            }*/
+            }
             
+            System.out.println("Ronda Terminada");
+            System.out.println("--------------------------------");
+            System.out.println("Quedas: " + Terricola.getTotal() + " terricolas");
+            System.out.println("Quedas: " + Marciano.getTotal() + " marcianos");
             
                         
         } while (quedanVivosEnAmbosBandos());
