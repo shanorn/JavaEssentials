@@ -21,7 +21,7 @@ public class MarsAttack {
         guerra.empiezaGuerra();
         */
         
-        GuerraMultiple laMuertePela = new GuerraMultiple(2, 3, 1, 2);
+        GuerraMultiple laMuertePela = new GuerraMultiple(8, 5,3, 5);
         laMuertePela.empiezaGuerra();
     }
 }

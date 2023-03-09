@@ -58,4 +58,7 @@ public class Nave {
         }
     }
     
+    public Guerrero getTripulante(int posicion){
+        return tripulacion[posicion];
+    }
 }

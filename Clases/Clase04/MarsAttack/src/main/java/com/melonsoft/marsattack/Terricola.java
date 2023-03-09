@@ -53,5 +53,9 @@ public class Terricola extends Guerrero {
     public static int getTotal() {
         return Terricola.totalTerricolas;
     }
+    
+    public void resetDisparos(){
+        Arrays.fill(disparosHechos, 0);
+    }
 
 }

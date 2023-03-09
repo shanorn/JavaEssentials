@@ -19,6 +19,12 @@ public class GuerraMultiple {
     private int numNavesMarcianas;
     
     public GuerraMultiple(int numeroNavesTerricolas, int numeroTerricolasPorNave, int numeroNavesMarcianas, int numeroMarcianosPorNave){
+        this.numTerricolasPorNave = numeroTerricolasPorNave;
+        this.numMarcianosPorNave = numeroMarcianosPorNave;
+        
+        this.numNavesTerricolas = numeroNavesTerricolas;
+        this.numNavesMarcianas = numeroNavesMarcianas;
+        
         this.navesTerricolas = new Nave[numeroNavesTerricolas];
         
         for (int i = 0; i < this.navesTerricolas.length; i++){
@@ -31,11 +37,7 @@ public class GuerraMultiple {
             this.navesMarcianas[j] = new Nave("Marcianos", numeroMarcianosPorNave);
         }
         
-        this.numTerricolasPorNave = numeroTerricolasPorNave;
-        this.numMarcianosPorNave = numeroMarcianosPorNave;
         
-        this.numNavesTerricolas = numeroNavesTerricolas;
-        this.numNavesMarcianas = numeroNavesMarcianas;
     }
     
     public void empiezaGuerra() {
@@ -58,29 +60,31 @@ public class GuerraMultiple {
                 }
             }*/
             
-            int tamanoMaxTripulaciones = navesTerricolas[0].cuantosQuedan() > navesMarcianas[0].cuantosQuedan() ?
-                navesTerricolas[0].cuantosQuedan() : navesMarcianas[0].cuantosQuedan();
             
-            System.out.println(tamanoMaxTripulaciones);
+           
             
             for(int i = 0; i < this.numNavesTerricolas && quedanVivosEnAmbosBandos(); i++){
                 for (int j = 0; j < this.numNavesMarcianas && quedanVivosEnAmbosBandos(); j++){
                     
+                    System.out.println("Lucha la nave [" + i + "] terricola VS la nave [" + j + "] marciana");
+                    System.out.println("---------------------------------------------------------");
                     for (int k = 0; k < this.numTerricolasPorNave && quedanVivosEnAmbosBandos(); k++){
                         for (int l = 0; l < this.numMarcianosPorNave && quedanVivosEnAmbosBandos(); l++){
-                            
+                                                         
                             this.navesMarcianas[j].recibeDisparo(this.navesTerricolas[i].generaDisparo(k));
                             
                         
                             this.navesTerricolas[i].recibeDisparo(this.navesMarcianas[j].generaDisparo(l));
                         
                         }
+                        ((Terricola) navesTerricolas[i].getTripulante(k)).resetDisparos();
                     }
+                    
                 }
             }
-            
+            System.out.println("---------------");
             System.out.println("Ronda Terminada");
-            System.out.println("--------------------------------");
+            System.out.println("---------------");
             System.out.println("Quedas: " + Terricola.getTotal() + " terricolas");
             System.out.println("Quedas: " + Marciano.getTotal() + " marcianos");
             
@@ -96,9 +100,8 @@ public class GuerraMultiple {
     }
 
     private boolean quedanVivosEnAmbosBandos() {
-        return navesTerricolas[0].cuantosQuedan() > 0 && navesMarcianas[0].cuantosQuedan() > 0;
+        return Terricola.getTotal() > 0 && Marciano.getTotal() > 0;
         
     }
-
 
 }
