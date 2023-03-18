@@ -22,40 +22,28 @@ public class Raton {
     private Cromosoma cromosoma1;
     private Cromosoma cromosoma2;
 
-    public Raton() {
-        this.referencia = "0000";
-        this.fechaNacimiento = new Date();
-        this.sexo = Sexo.HEMBRA;
-        this.peso = 0;
-        this.temperatura = 0.0F;
-        this.textoLibre = "";
-        
-        generarCromosomas();
-               
-    }
-
-    public Raton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre) {
+    public Raton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre, boolean mutacionGen1, boolean mutacionGen2) {
         this.referencia = referencia;
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.peso = peso;
         this.temperatura = temperatura;
         this.textoLibre = textoLibre;
-        generarCromosomas();
+        generarCromosomas(mutacionGen1, mutacionGen2);
     }
     
     
-    private void generarCromosomas(){
+    private void generarCromosomas(boolean mutacionGen1, boolean mutacionGen2){
         if (this.sexo != null){
             if (this.sexo == Sexo.MACHO){
-                this.cromosoma1 = new Cromosoma(TipoCromosoma.X);
-                this.cromosoma2 = new Cromosoma(TipoCromosoma.Y);
+                this.cromosoma1 = new Cromosoma(TipoCromosoma.X, mutacionGen1);
+                this.cromosoma2 = new Cromosoma(TipoCromosoma.Y, mutacionGen2);
             } else {
-                this.cromosoma1 = new Cromosoma(TipoCromosoma.X);
-                this.cromosoma2 = new Cromosoma(TipoCromosoma.X);
+                this.cromosoma1 = new Cromosoma(TipoCromosoma.X, mutacionGen1);
+                this.cromosoma2 = new Cromosoma(TipoCromosoma.X, mutacionGen2);
             }
         } else {
-            //Excepción
+            throw new ExceptionInInitializerError("El sexo ya habia sido asignado.");
         }
     }
     
