@@ -125,6 +125,22 @@ public class Raton {
     public Cromosoma getCromosoma2() {
         return cromosoma2;
     }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setCromosoma1(boolean mutado) {
+        this.cromosoma1.setMutacion(mutado);
+    }
+    
+    public void setCromosoma2(boolean mutado){
+        this.cromosoma2.setMutacion(mutado);
+    }
     
     
 }

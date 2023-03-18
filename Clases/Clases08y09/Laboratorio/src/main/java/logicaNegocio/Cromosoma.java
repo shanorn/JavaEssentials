@@ -16,7 +16,7 @@ public class Cromosoma {
 
     public Cromosoma(TipoCromosoma tipo, boolean mutacionGen) {
         this.tipo = tipo;
-        Random rand = new Random();
+        
         if (tipo == TipoCromosoma.X){
             if (mutacionGen){
                 mutacion = "Esteril";
@@ -34,6 +34,23 @@ public class Cromosoma {
         
     }
 
+    public void setMutacion(boolean mutado){
+        if (tipo == TipoCromosoma.X){
+            if (mutado){
+                mutacion = "Esteril";
+            }else{
+                mutacion = "Normal";
+            }
+        }
+        if (tipo == TipoCromosoma.Y){
+            if (mutado){
+                mutacion = "Poligamia";
+            }else{
+                mutacion = "Normal";
+            }
+        }
+    }
+    
     public String getMutacion() {
         return mutacion;
     }

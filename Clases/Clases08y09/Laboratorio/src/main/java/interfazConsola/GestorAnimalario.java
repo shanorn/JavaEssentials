@@ -5,6 +5,7 @@
 package interfazConsola;
 
 import almacenamiento.PoblacionFile;
+import java.awt.BorderLayout;
 import java.io.File;
 import java.util.Scanner;
 import java.text.ParseException;
@@ -59,13 +60,57 @@ public class GestorAnimalario {
                     this.poblacionActual.listarReferencias();
                     break;
                 case 5: 
-                    System.out.println("Not implemented yet.");
+                    
+                    System.out.println("Por favor introduzca la referencia: ");
+                    String referencia = sc.nextLine();
+                    this.poblacionActual.eliminarRaton(referencia);
+                    
+                    
                     break;
                 case 6:
-                    System.out.println("Not implemented yet. ");
+                    System.out.println("Introduzca la referencia del raton a modificar: ");
+                    referencia = sc.nextLine();
+                    System.out.println("Introduzca la fecha de nacimiento (dd/mm/aaaa): ");
+                    String fechaString = sc.nextLine();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fecha;
+                    try {
+                        fecha = sdf.parse(fechaString);
+                    
+                    
+                        System.out.println("Introduzca el sexo macho(m)/hembra(h)");
+                        char s = sc.nextLine().charAt(0);
+                        Sexo sexo = s == 'h'?Sexo.HEMBRA:Sexo.MACHO;
+                        System.out.println("Introduzca el peso (g)");
+                        int peso = Integer.parseInt(sc.nextLine());
+                        System.out.println("Introduzca la temperatura");
+                        float temperatura = Float.parseFloat(sc.nextLine());
+                        System.out.println("Introduzca el texto");
+                        String texto = sc.nextLine();
+                        System.out.println("¿Tiene mutación en el gen 1 (X)?");
+                        char mut1 = sc.nextLine().charAt(0);
+                        boolean m1 = mut1 == 's'?true:false;
+                        boolean m2;
+                        if (sexo == Sexo.MACHO){
+                            System.out.println("¿Tiene mutación en el gen 2 (Y)?");
+                            char mut2 = sc.nextLine().charAt(0);
+                            m2 = mut2 == 's'?true:false;
+                        } else {
+                            System.out.println("¿Tiene mutación en el gen 2 (X)?");
+                            char mut2 = sc.nextLine().charAt(0);
+                            m2 = mut2 == 's'?true:false;
+                        }
+                        this.poblacionActual.modificarRaton(referencia, fecha, sexo, peso, temperatura, texto, m1,m2);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(GestorAnimalario.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (NullPointerException ex){
+                        System.out.println(ex.getMessage());
+                    }
                     break;
                 case 7:
-                    //this.poblacionActual.mostrarDetallesRatones();
+                    System.out.println("Por favor introduzca la referencia: ");
+                    referencia = sc.nextLine();
+                    this.poblacionActual.mostrarDetalleRaton(referencia);
                     break;
                 case 8:
                     if (fichero != null){
