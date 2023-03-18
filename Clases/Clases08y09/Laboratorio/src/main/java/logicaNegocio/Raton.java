@@ -4,9 +4,9 @@
  */
 package logicaNegocio;
 
-import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  *
@@ -78,9 +78,11 @@ public class Raton {
 
     @Override
     public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                
         String cadena = "REF: " + this.referencia + "\n" +
-                "Fecha Nacimiento: " + this.fechaNacimiento + "\n" +
-                "Sexo: " + (this.sexo == Sexo.MACHO?"Macho":"Hembra") + "\n" +
+                "Fecha Nacimiento: " + sdf.format(fechaNacimiento) + "\n" +
+                "Sexo: " + (this.sexo == Sexo.MACHO?"MACHO":"HEMBRA") + "\n" +
                 "Peso: " + this.peso + "\n" +
                 "Temperatura: " + this.temperatura + "\n" +
                 "Texto: \n" + this.textoLibre + "\n" +
@@ -94,8 +96,10 @@ public class Raton {
         return referencia;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getFechaNacimiento() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        
+        return df.format(fechaNacimiento);
     }
 
     public Sexo getSexo() {

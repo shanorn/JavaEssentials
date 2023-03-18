@@ -26,8 +26,8 @@ public class Poblacion {
         this.ratones = new ArrayList<Raton>();
     }
     
-    public void anadirRaton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre){
-        Raton nuevoRaton = new Raton(referencia, fechaNacimiento, sexo, peso, temperatura, textoLibre);
+    public void anadirRaton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre, boolean mutacionGen1, boolean mutacionGen2){
+        Raton nuevoRaton = new Raton(referencia, fechaNacimiento, sexo, peso, temperatura, textoLibre, mutacionGen1, mutacionGen2);
         this.ratones.add(nuevoRaton);
     }
     
@@ -64,5 +64,11 @@ public class Poblacion {
     
     public void modificarRaton(String referencia){
         
+    }
+    
+    public void mostrarDetallesRatones(){
+        for (Raton raton : ratones) {
+            System.out.println(raton);
+        }
     }
 }

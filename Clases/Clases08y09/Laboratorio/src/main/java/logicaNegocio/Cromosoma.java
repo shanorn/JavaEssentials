@@ -14,21 +14,21 @@ public class Cromosoma {
     private TipoCromosoma tipo;
     private String mutacion;
 
-    public Cromosoma(TipoCromosoma tipo) {
+    public Cromosoma(TipoCromosoma tipo, boolean mutacionGen) {
         this.tipo = tipo;
         Random rand = new Random();
         if (tipo == TipoCromosoma.X){
-            if (rand.nextInt(2) == 0){
-                mutacion = "Normal";
-            }else{
+            if (mutacionGen){
                 mutacion = "Esteril";
+            }else{
+                mutacion = "Normal";
             }
         }
         if (tipo == TipoCromosoma.Y){
-            if (rand.nextInt(2) == 0){
-                mutacion = "Normal";
-            }else{
+            if (mutacionGen){
                 mutacion = "Poligamia";
+            }else{
+                mutacion = "Normal";
             }
         }
         
