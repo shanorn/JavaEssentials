@@ -6,6 +6,7 @@ package logicaNegocio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -20,11 +21,12 @@ public class Poblacion {
     public Poblacion(String nombre, String responsable, int numeroDiasInstalacion) {
         this.nombre = nombre;
         this.responsable = responsable;
+        if (numeroDiasInstalacion < 0 || numeroDiasInstalacion > 270) throw new IllegalArgumentException("El valor debe estar entre [0, 270].");
         this.numeroDiasInstalacion = numeroDiasInstalacion;
         this.ratones = new ArrayList<Raton>();
     }
     
-    public void anadirRaton(String referencia, LocalDate fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre){
+    public void anadirRaton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre){
         Raton nuevoRaton = new Raton(referencia, fechaNacimiento, sexo, peso, temperatura, textoLibre);
         this.ratones.add(nuevoRaton);
     }
@@ -42,6 +44,22 @@ public class Poblacion {
                 this.ratones.remove(raton);
             }
         }
+    }
+
+    public ArrayList<Raton> getRatones() {
+        return ratones;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public int getNumeroDiasInstalacion() {
+        return numeroDiasInstalacion;
     }
     
     public void modificarRaton(String referencia){

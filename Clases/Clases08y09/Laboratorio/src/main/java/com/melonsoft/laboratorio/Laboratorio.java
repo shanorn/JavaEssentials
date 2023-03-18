@@ -4,6 +4,7 @@
 
 package com.melonsoft.laboratorio;
 
+import interfazConsola.GestorAnimalario;
 import java.util.Random;
 import logicaNegocio.Raton;
 
@@ -14,8 +15,12 @@ import logicaNegocio.Raton;
 public class Laboratorio {
   
     public static void main(String[] args) {
-        Raton rata = new Raton();
-        System.out.println(rata);
+        
+        GestorAnimalario gestor = new GestorAnimalario();
+        gestor.ejecutar();
+        //System.out.println(System.getProperty("user.dir"));
+
+        
     }
     
 }

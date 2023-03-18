@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  */
 public class Raton {
     private String referencia;
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
     private Sexo sexo;
     private int peso;
     private float temperatura;
@@ -24,7 +24,7 @@ public class Raton {
 
     public Raton() {
         this.referencia = "0000";
-        this.fechaNacimiento = LocalDate.now();
+        this.fechaNacimiento = new Date();
         this.sexo = Sexo.HEMBRA;
         this.peso = 0;
         this.temperatura = 0.0F;
@@ -34,7 +34,7 @@ public class Raton {
                
     }
 
-    public Raton(String referencia, LocalDate fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre) {
+    public Raton(String referencia, Date fechaNacimiento, Sexo sexo, int peso, float temperatura, String textoLibre) {
         this.referencia = referencia;
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
@@ -104,6 +104,34 @@ public class Raton {
 
     public String getReferencia() {
         return referencia;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public float getTemperatura() {
+        return temperatura;
+    }
+
+    public String getTextoLibre() {
+        return textoLibre;
+    }
+
+    public Cromosoma getCromosoma1() {
+        return cromosoma1;
+    }
+
+    public Cromosoma getCromosoma2() {
+        return cromosoma2;
     }
     
     
